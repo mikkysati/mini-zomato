@@ -1,0 +1,15 @@
+{
+  "name": "zeta-project",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-sanitize": "^1.6.1",
+    "express": "latest",
+    "morgan": "latest",
+    "oi.select": "^0.2.21"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-sass": "latest"
+  }
+}

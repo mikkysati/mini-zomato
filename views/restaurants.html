@@ -1,0 +1,144 @@
+<div class="restaurant-container">
+	<header>
+		<div class="container">
+			<div class="row row-content">
+				<div class="col col-xs-2 zomato-header">
+					<div class="zomato-logo">
+						<img src="img/zomato_logo.svg">
+					</div>
+				</div>
+				<div class="col col-xs-7">
+					<ng-include src="'views/search.html'" class="search-container"> </ng-include>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div ng-controller="restaurantsCtrl" class="container">
+
+		<div class="row row-content">
+			<div class="query-text">
+				{{currentCity}} Restaurants
+			</div>	
+		</div>
+
+		<div class="row row-content">
+			<aside class="col col-xs-2">
+				<div class="aside-text">Sort by:</div>
+				<ul>
+					<li ng-click="sortBy(); sortVariable = 'popu';" ng-class="{'active': sortVariable === 'popu'}">
+						<span class="main">Popularity</span> - high to low
+					</li>
+					<li ng-click="sortBy('rating', 'desc'); sortVariable = 'ratingdesc';" ng-class="{'active': sortVariable === 'ratingdesc'}">
+						<span class="main">Rating</span> - high to low
+					</li>
+					<li ng-click="sortBy('rating', 'asc'); sortVariable = 'ratingasc';" ng-class="{'active': sortVariable === 'ratingasc'}">
+						<span class="main">Rating</span> - low to high
+					</li>
+					<li ng-click="sortBy('cost', 'desc'); sortVariable = 'costdesc';" ng-class="{'active': sortVariable === 'costdesc'}">
+						<span class="main">Cost</span> - high to low
+					</li>
+					<li ng-click="sortBy('cost', 'asc'); sortVariable = 'costasc';" ng-class="{'active': sortVariable === 'costasc'}">
+						<span class="main">Cost</span> - low to high
+					</li>
+					<li ng-click="sortBy('real_distance', 'asc'); sortVariable = 'dist';" ng-class="{'active': sortVariable === 'dist'}">
+						<span class="main">Distance</span> - nearby
+					</li>
+				</ul>
+
+				<div class="aside-text">Cost for two:</div>
+				<ul class="cost-container">
+					<li ng-click="filterBy(0,2000); costForTwo = 'first';" ng-class="{'active': costForTwo === 'first'}">
+						Less than <i class="fa fa-inr" aria-hidden="true"></i>2000
+					</li>
+					<li ng-click="filterBy(2000,3000); costForTwo = 'second';" ng-class="{'active': costForTwo === 'second'}">
+						<i class="fa fa-inr" aria-hidden="true"></i>2000 to <i class="fa fa-inr" aria-hidden="true"></i>3000
+					</li>
+					<li ng-click="filterBy(3000,4000); costForTwo = 'third';" ng-class="{'active': costForTwo === 'third'}">
+						<i class="fa fa-inr" aria-hidden="true"></i>3000 to <i class="fa fa-inr" aria-hidden="true"></i>4000
+					</li>
+					<li ng-click="filterBy(4000,10000); costForTwo = 'fourth';" ng-class="{'active': costForTwo === 'fourth'}">
+						<i class="fa fa-inr" aria-hidden="true"></i>4000+
+					</li>
+					<li ng-click="removeFilter(); costForTwo = false;">
+						All range
+					</li>
+				</ul>
+
+				<div class="aside-text">Arrange By:</div>
+				<ul class="cost-container">
+					<li ng-click="sortByName(1); nameVariable = 'nameasc';" ng-class="{'active': nameVariable === 'nameasc'}">
+						<span class="main">Name</span> - Ascending
+					</li>
+					<li ng-click="sortByName(-1); nameVariable = 'namedesc';" ng-class="{'active': nameVariable === 'namedesc'}">
+						<span class="main">Name</span> - Descending
+					</li>
+				</ul>
+			</aside>
+
+			<div class="cards-view col col-xs-7">
+				<div ng-repeat = "restaurant in restaurants" class="row row-content card">
+					<div class="row row-content card-header">
+						<div class="col col-xs-3 card-left">
+							<div>
+								<img ng-src="{{restaurant.restaurant.featured_image}}">
+							</div>
+						</div>
+						<div class="col col-xs-8 card-right">
+							<div class="row row-content card-name">
+								{{restaurant.restaurant.name}}
+							</div>
+							<div class="row row-content card-location">
+								{{restaurant.restaurant.location.locality}}
+							</div>
+							<div class="row row-content card-address">
+								{{restaurant.restaurant.location.address}}
+							</div>
+							<div class="row row-content card-rating">
+								<span class="label" style="background-color: #{{restaurant.restaurant.user_rating.rating_color}}">
+									{{restaurant.restaurant.user_rating.aggregate_rating}}
+									<i class="fa fa-star" aria-hidden="true"></i>
+									</span><span class="votes">&nbsp;{{restaurant.restaurant.user_rating.votes}} votes</span>
+							</div>
+						</div>
+					</div>
+
+					<hr>
+
+					<div class="row row-content card-footer">
+						<div class="row row-content">
+							<div class="col col-xs-3 card-left">
+							CUISINES:
+							</div>
+							<div class="col col-xs-8 card-right">
+							{{restaurant.restaurant.cuisines}}
+							</div>
+						</div>
+						<div class="row row-content">
+							<div class="col col-xs-3 card-left">
+							COST FOR TWO:
+							</div>
+							<div class="col col-xs-8 card-right">
+								<i class="fa fa-inr" aria-hidden="true"></i>{{restaurant.restaurant.average_cost_for_two}}
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="row row-content card not-found" ng-hide="restaurants.length">
+				No Restaurants found for your query&nbsp;&nbsp;<i class="fa fa-frown-o" aria-hidden="true"></i>
+				</div>
+			</div>
+			<aside class="col col-xs-2">
+				<div class="aside-text">Cuisines:</div>
+				<ul class="cuisines-container">
+					<li ng-click="filterByCuisines(0, 'cusinex')">
+					All Cuisines
+					</li>
+					<li ng-repeat="item in cuisines.cuisines" ng-click="filterByCuisines($index)" ng-class="{'active': cuisineVariable === $index}">
+						{{item.cuisine.cuisine_name}}
+					</li>
+				</ul>
+			</aside>
+		</div>
+	</div>
+</div>

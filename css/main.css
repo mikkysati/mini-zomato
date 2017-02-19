@@ -1,0 +1,209 @@
+/* variables */
+/* browser specific */
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #CFCFCF; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #CFCFCF; }
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #CFCFCF; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #CFCFCF; }
+
+*:focus {
+  outline: none; }
+
+/* bootstrap override */
+.btn-danger {
+  background-color: #A71823; }
+
+.label {
+  padding-right: 0.4em; }
+
+.home-container {
+  background-image: url("../img/background.jpg");
+  height: 100vh; }
+  .home-container ng-include {
+    width: 50%;
+    margin-left: 15%; }
+
+.search-container {
+  position: relative;
+  top: 20%;
+  left: 23%;
+  width: 54%; }
+  .search-container input {
+    width: 100%;
+    padding-left: 30px;
+    border-radius: 4px;
+    border: none;
+    height: 34px; }
+  .search-container .fa-search {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    font-size: 0.9em; }
+
+.zomato-logo {
+  position: relative;
+  top: 10%;
+  text-align: center; }
+  .zomato-logo img {
+    height: 200px;
+    width: 200px; }
+
+.welcome-text {
+  position: relative;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  top: 15%; }
+
+/* oi-select overrides */
+oi-select:not(.multiple) .select-search-list-item_selection {
+  width: calc(100% - 25px); }
+
+oi-select .select-dropdown {
+  max-height: 300px; }
+oi-select .location-icon {
+  padding: 0 5px;
+  padding-top: 4px; }
+oi-select .select-search {
+  cursor: pointer; }
+oi-select li.select-search-list-item {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-shadow: none; }
+
+button {
+  width: 100%; }
+
+/* restaurants css */
+.restaurant-container {
+  min-height: 100vh;
+  background-color: #F3F3F3; }
+  .restaurant-container .search-container {
+    left: -5%; }
+  .restaurant-container header {
+    border: 1px solid #E7E7E7;
+    height: 90px;
+    background-color: #F9F9F9; }
+  .restaurant-container .zomato-header {
+    padding: 0; }
+  .restaurant-container .zomato-logo {
+    position: absolute;
+    top: 3px; }
+  .restaurant-container img {
+    height: 80px;
+    width: 80px; }
+  .restaurant-container input {
+    border: 1px solid #E7E7E7; }
+  .restaurant-container .query-text {
+    padding: 15px 0;
+    font-size: 25px;
+    font-weight: 600; }
+  .restaurant-container aside {
+    color: #9FA9AD;
+    background-color: white;
+    padding-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #E7E7E7; }
+    .restaurant-container aside ul {
+      list-style: none;
+      font-size: 12px;
+      padding: 0; }
+      .restaurant-container aside ul li {
+        margin: 4px 0;
+        cursor: pointer; }
+      .restaurant-container aside ul li:hover .main {
+        color: #D7525C; }
+      .restaurant-container aside ul li.active {
+        font-weight: bold; }
+        .restaurant-container aside ul li.active .main {
+          color: #12A14B; }
+    .restaurant-container aside .aside-text {
+      font-weight: bold;
+      font-size: 16px;
+      padding-top: 10px;
+      padding-bottom: 5px;
+      color: #33373D; }
+    .restaurant-container aside .main {
+      color: #33373D; }
+    .restaurant-container aside .cost-container {
+      color: #838992; }
+      .restaurant-container aside .cost-container li.active {
+        color: #12A14B; }
+      .restaurant-container aside .cost-container li:hover {
+        color: #D7525C; }
+  .restaurant-container .cards-view .card {
+    background-color: white;
+    margin: 0 20px;
+    margin-bottom: 20px;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px; }
+  .restaurant-container .card {
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 15px; }
+    .restaurant-container .card img {
+      height: 120px;
+      width: 140px;
+      border-radius: 4px; }
+    .restaurant-container .card .card-name {
+      margin-top: -6px;
+      color: #CB202D;
+      font-weight: bold;
+      font-size: 25px; }
+    .restaurant-container .card .card-location {
+      font-weight: bold;
+      font-size: 15px; }
+    .restaurant-container .card .card-address {
+      color: #96A1A6; }
+    .restaurant-container .card .card-right {
+      padding-left: 35px; }
+    .restaurant-container .card .card-footer {
+      padding-left: 15px;
+      padding-bottom: 15px; }
+      .restaurant-container .card .card-footer .row {
+        padding-bottom: 3px; }
+      .restaurant-container .card .card-footer .card-left {
+        color: #BCC3C6;
+        font-size: 12px; }
+      .restaurant-container .card .card-footer .card-right {
+        padding-left: 15px;
+        font-size: 12px;
+        color: #838992; }
+    .restaurant-container .card .card-rating {
+      padding-top: 4px; }
+      .restaurant-container .card .card-rating .votes {
+        color: #898989;
+        font-weight: bold; }
+  .restaurant-container ng-include .row {
+    margin-top: 25px; }
+    .restaurant-container ng-include .row .col-xs-2 {
+      padding-right: 4px; }
+      .restaurant-container ng-include .row .col-xs-2 button {
+        width: 100%; }
+
+.cuisines-container {
+  color: #838992;
+  height: 500px;
+  overflow-y: auto; }
+  .cuisines-container li:hover {
+    color: #D7525C; }
+  .cuisines-container li.active {
+    color: #12A14B; }
+
+.not-found {
+  padding-bottom: 15px;
+  font-weight: bold; }
+
+/*# sourceMappingURL=main.css.map */

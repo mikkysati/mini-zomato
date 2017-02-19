@@ -1,0 +1,24 @@
+<div>
+	<div class="row row-content" ng-controller="homeCtrl as home">
+		<div class="col-xs-3">
+			<oi-select
+			id="location-search"
+		    oi-options="city.title for city in home.searchLocations($query) | limitTo:10"
+		    ng-model="home.selectedCity"
+		    placeholder="Select Location"
+		    ng-change = "home.setCurrentLocation()"
+		    title="{{home.selectedCity.title}}"
+		    ></oi-select>
+		</div>
+
+		<div class="col-xs-7">
+			<input type="text" ng-model="home.query" placeholder="Search for restaurants or cuisines...">
+			<i class="fa fa-search" aria-hidden="true"></i>
+		</div>
+
+		<div class="col-xs-2">
+			<button ng-click="home.searchRestaurants()" class="btn btn-danger">Search</button>
+		</div>
+		
+	</div>
+</div>
